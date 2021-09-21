@@ -6,3 +6,4 @@ export { default as Date } from './Date';
 export { default as Schedule } from './Schedule';
 export { default as Address } from './Address';
 export { default as HotelsButton } from './HotelsButton';
+export { default as Rsvp } from './Rsvp';

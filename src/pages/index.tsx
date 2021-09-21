@@ -1,5 +1,5 @@
 import { Heading, Text, Box, Container, VStack, Alert, AlertTitle, AlertDescription, AlertIcon, Grid } from '@chakra-ui/react';
-import { Page, Name, Date, Schedule, Address, MapOptionButton, HotelsButton } from '../components';
+import { Page, Name, Date, Schedule, Address, MapOptionButton, HotelsButton, Rsvp } from '../components';
 import { ImBug } from 'react-icons/im';
 import config from '../config';
 
@@ -21,6 +21,11 @@ export default function IndexPage() {
             <Date textAlign="center" fontSize="2xl" fontFamily="heading" fontWeight="bold" />
           </Box>
         </VStack>
+      </Container>
+
+      <Container mb={12} maxW="container.sm" borderColor="purple.700" borderWidth={2} p={4} rounded="sm" shadow="md">
+        <Heading as="h2" fontSize="3xl" textAlign="center" mb={8}>RSVP</Heading>
+        <Rsvp textAlign="center" justifyContent="center" />
       </Container>
 
       <Container maxW="container.lg" mb={12}>
