@@ -1,5 +1,6 @@
-import { ChakraProps, Box, Text } from '@chakra-ui/react';
-import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
+import { ChakraProps, Box, Text, Icon } from '@chakra-ui/react';
+import ReactMapboxGl, { Marker } from 'react-mapbox-gl';
+import { ImLocation2 } from 'react-icons/im';
 import config from '../config';
 
 const Map = ReactMapboxGl({ accessToken: config.mapbox.accessToken, interactive: false });
@@ -15,11 +16,14 @@ export default function Address(props: ChakraProps) {
           height: '15rem',
         }}
       >
-        <Layer type="symbol" id="marker" layout={{ 'icon-image': 'marker-15' }}>
-          <Feature coordinates={config.venue.coords} />
-        </Layer>
+        <Marker
+          coordinates={config.venue.coords}
+          anchor="bottom"
+        >
+          <Icon fontSize="4xl" color="red.500" as={ImLocation2} />
+        </Marker>
       </Map>
-      <Text mt={2} mb={2}>
+      <Text mt={4} mb={2}>
         <Text as="span" fontWeight="bold">{config.venue.name}</Text><br />
         {config.venue.address.line1}<br />
         {config.venue.address.line2 && <>{config.venue.address.line2}<br /></>}

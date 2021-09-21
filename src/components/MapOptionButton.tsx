@@ -1,11 +1,11 @@
-import { ChakraProps, Button, IconButton } from '@chakra-ui/react';
+import { ChakraProps, Box, IconButton } from '@chakra-ui/react';
 import { ImAppleinc, ImGoogle3 } from 'react-icons/im';
 import { makeAppleMapsUrl, makeGoogleMapsUrl } from '../utils';
 import config from '../config';
 
 export default function MapOptionButton(props: ChakraProps) {
   return (
-    <>
+    <Box d="inline-block" {...props}>
       <IconButton
         aria-label="Apple Maps"
         icon={<ImAppleinc />}
@@ -22,6 +22,6 @@ export default function MapOptionButton(props: ChakraProps) {
         variant="ghost"
         target="_blank"
       />
-    </>
+    </Box>
   )
 }
