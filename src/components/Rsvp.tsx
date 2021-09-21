@@ -104,7 +104,7 @@ export default function Rsvp(props: ChakraProps) {
             } catch(ex) {
                 toast({
                   title: 'Error',
-                  description: ex.toString(),
+                  description: (ex as Error).toString(),
                   status: 'error',
                 });
             }
@@ -149,7 +149,7 @@ export default function Rsvp(props: ChakraProps) {
           } catch(ex) {
               toast({
                 title: 'Error',
-                description: ex.toString(),
+                description: (ex as Error).toString(),
                 status: 'error',
               });
           }
