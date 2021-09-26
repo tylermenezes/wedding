@@ -28,8 +28,8 @@ export default function Page({ style, children, ...rest }: PageProps) {
       <Head>
         <title>Askelson-Menezes Wedding</title>
       </Head>
-      <Box p={8} pb={16} {...rest}>
-        <Container mb={16} maxW="container.xl">
+      <Box p={4} pb={0} {...rest}>
+        <Container mb={4} maxW="container.xl">
           <Grid templateColumns="1fr minmax(0, 100%)" gap={8} alignItems="center">
             <Box>
               <Name style={style === 'hero' ? 'icon' : 'short'} whiteSpace="nowrap" />
@@ -51,6 +51,7 @@ export default function Page({ style, children, ...rest }: PageProps) {
                   as="a"
                   href={makeGoogleMapsUrl(config.venue.address)}
                   target="_blank"
+                  colorScheme="purple"
                 >
                   Map
                 </Button>
@@ -64,7 +65,7 @@ export default function Page({ style, children, ...rest }: PageProps) {
         <Container mt={16} maxW="container.xl">
           <Grid templateColumns="1fr minmax(0, 100%)" gap={8}>
             <Text color="gray.500" whiteSpace="nowrap" fontSize="sm">
-              Made with <Icon as={ImHeart} /> by Tyler &amp; Phoebe in Philadelphia<br />
+              <Icon as={ImHeart} /> Tyler &amp; Phoebe<br />
               &copy; 2021-2022
             </Text>
           </Grid>
