@@ -30,7 +30,7 @@ export default function Page({ style, children, ...rest }: PageProps) {
       </Head>
       <Box p={8} pb={16} {...rest}>
         <Container mb={16} maxW="container.xl">
-          <Grid templateColumns="1fr minmax(0, 100%)" gap={8}>
+          <Grid templateColumns="1fr minmax(0, 100%)" gap={8} alignItems="center">
             <Box>
               <Name style={style === 'hero' ? 'icon' : 'short'} whiteSpace="nowrap" />
               {style !== 'hero' && (<Date />)}
