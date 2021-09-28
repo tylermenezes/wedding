@@ -63,5 +63,43 @@ export default {
       name: 'About Tyler',
       url: 'https://tyler.vc/'
     },
+  ],
+  faqs: [
+    {
+      q: 'Will I have to pay for parking?',
+      a: 'There is free parking available!'
+    },
+    {
+      q: 'Are kids welcome?',
+      a: `We request that you don't bring children as we're very short on space. (Contact us first if you really need to!)`
+    },
+    {
+      q: 'Can I bring a date?',
+      a: `Most invites already include a +1. If yours didn't please contact us first.`
+    },
+    {
+      q: 'When is the RSVP deadline?',
+      a: `A month prior, please!`
+    },
+    {
+      q: 'Where is the reception?',
+      a: 'The entire wedding is in the same venue. No need to go anywhere!'
+    },
+    {
+      q: 'What if I have a dietary restriction?',
+      a: 'We will have vegetarian options available, but please contact us if you are vegan, gluten-free, dairy-free, etc.'
+    },
+    {
+      q: 'Can I take pictures?',
+      a: `Sure, but we'll have plenty of official pictures. Please make sure to enjoy yourself too.`
+    },
+    {
+      q: 'Is there a gifts registry?',
+      a: 'We will figure something out for this, check back soon.'
+    },
+    {
+      q: 'I have a question not answered here; how do I contact you?',
+      a: 'wedding@xanadu.ws'
+    }
   ]
 }

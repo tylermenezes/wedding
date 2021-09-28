@@ -1,5 +1,5 @@
 import { Heading, Text, Box, Container, VStack, Alert, AlertTitle, AlertDescription, AlertIcon, Grid } from '@chakra-ui/react';
-import { Page, Name, Date, Schedule, Address, MapOptionButton, HotelsButton, Rsvp } from '../components';
+import { Page, Name, Date, Schedule, Address, MapOptionButton, HotelsButton, Rsvp, Faq } from '../components';
 import { ImBug } from 'react-icons/im';
 import config from '../config';
 
@@ -63,24 +63,31 @@ export default function IndexPage() {
         </Grid>
       </Container>
 
-      <Container maxW="container.md">
-        <Alert colorScheme="purple">
-          <AlertIcon as={ImBug} alignSelf="flex-start" />
-          <Box>
-            <AlertTitle>COVID Precautions</AlertTitle>
-            <AlertDescription>
-              <Text mb={2}>
-                We don&apos;t know exactly what the state of the world will be in August 2022, but Wisteria Hall has
-                mixed indoor-outdoor seating which we expect will provide a safe venue (with a lower risk of
-                cancellation).
-              </Text>
-              <Text>
-                At this time we expect that we will require that all guests be fully vaccinated by the time they attend,
-                and we may require masks.
-              </Text>
-            </AlertDescription>
-          </Box>
-        </Alert>
+      <Container mb={12} maxW="container.xl" backgroundColor="purple.100" pt={4} pb={4}>
+        <Container maxW="container.md">
+          <Alert colorScheme="purple">
+            <AlertIcon as={ImBug} alignSelf="flex-start" />
+            <Box>
+              <AlertTitle>COVID Precautions</AlertTitle>
+              <AlertDescription>
+                <Text mb={2}>
+                  We don&apos;t know exactly what the state of the world will be in August 2022, but Wisteria Hall has
+                  mixed indoor-outdoor seating which we expect will provide a safe venue (with a lower risk of
+                  cancellation).
+                </Text>
+                <Text>
+                  At this time we expect that we will require that all guests be fully vaccinated by the time they attend,
+                  and we may require masks.
+                </Text>
+              </AlertDescription>
+            </Box>
+          </Alert>
+        </Container>
+      </Container>
+
+      <Container maxW="container.lg">
+        <Heading as="h2" fontSize="3xl" textAlign="center" mb={8}>FAQs</Heading>
+        <Faq />
       </Container>
     </Page>
   )
