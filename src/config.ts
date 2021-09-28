@@ -19,7 +19,7 @@ export default {
     parking: "Parking is available directly next to the venue (overflow parking in the park).",
   },
   dressCode: "Cocktail-party attire - nothing too fancy. The venue is open-air so dress for the weather.",
-  hotels: "Any hotel in downtown, capitol hill, or first hill is relatively nearby.",
+  hotels: "We do not have a hotel block. Any hotel in downtown, capitol hill, or first hill is nearby.",
   schedule: {
     starts: DateTime.fromISO("2022-08-14T15:30-0700"),
     ends: DateTime.fromISO("2022-08-14T21:00-0700"),
