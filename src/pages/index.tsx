@@ -11,7 +11,7 @@ export default function IndexPage() {
         minH="lg"
         backgroundImage="/hero.jpg"
         backgroundSize="cover"
-        backgroundPosition="50% 50%"
+        backgroundPosition="50% 35%"
         backgroundRepeat="no-repeat"
         mb={12}
       >
