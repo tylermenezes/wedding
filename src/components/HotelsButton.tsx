@@ -7,5 +7,5 @@ export default function HotelsButton(props: ButtonProps) {
   const ends = config.schedule.ends.setZone(config.tz).plus({ days: 1 }).toISODate();
   const url = `https://www.kayak.com/hotels/${cityCode}/${starts}/${ends}/2guests?sort=rank_a`;
 
-  return <Button as="a" target="_blank" {...props} href={url}>Hotels &raquo;</Button>
+  return <Button as="a" target="_blank" {...props} href={config.hotelsLink || url}>Hotels &raquo;</Button>
 }

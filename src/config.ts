@@ -19,7 +19,8 @@ export default {
     parking: "Parking is available directly next to the venue (overflow parking in the park).",
   },
   dressCode: "Cocktail-party attire - nothing too fancy. The venue is open-air so dress for the weather.",
-  hotels: "We do not have a hotel block. Any hotel in downtown, capitol hill, or first hill is nearby.",
+  hotels: "We do not have a hotel block. Need recommendations?",
+  hotelsLink: "https://weirdvector.notion.site/Hotels-ba050fb8345a4255ba143d7bb8ab37ef",
   schedule: {
     starts: DateTime.fromISO("2022-08-14T15:30-0700"),
     ends: DateTime.fromISO("2022-08-14T21:00-0700"),
@@ -54,6 +55,10 @@ export default {
     {
       name: 'Things to Do',
       url: 'https://weirdvector.notion.site/70cda8e7478040d880cf768612ca617e',
+    },
+    {
+      name: 'Hotels',
+      url: 'https://weirdvector.notion.site/Hotels-ba050fb8345a4255ba143d7bb8ab37ef',
     },
     {
       name: 'About Phoebe',
