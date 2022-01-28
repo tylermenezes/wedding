@@ -16,10 +16,10 @@ export default {
     },
     description: "Located in the Washington Park Arboretum",
     publicTransportation: "It's a 25min walk or a short Lyft ride from the UW light rail station.",
-    parking: "Parking is available directly next to the venue (overflow parking in the park).",
+    parking: "Next to the venue (overflow in the park).",
   },
   dressCode: "Cocktail-party attire - nothing too fancy. The venue is open-air so dress for the weather.",
-  hotels: "We do not have a hotel block. Need recommendations?",
+  hotels: "We do not have a block.",
   hotelsLink: "https://weirdvector.notion.site/Hotels-ba050fb8345a4255ba143d7bb8ab37ef",
   schedule: {
     starts: DateTime.fromISO("2022-08-14T15:30-0700"),
@@ -80,7 +80,7 @@ export default {
     },
     {
       q: 'Can I bring a date?',
-      a: `Most invites already include a +1. If yours didn't please contact us first.`
+      a: `Most invites already include a +1. If you need more please contact us first.`
     },
     {
       q: 'When is the RSVP deadline?',
@@ -103,7 +103,7 @@ export default {
       a: 'We will figure something out for this, check back soon.'
     },
     {
-      q: 'I have a question not answered here; how do I contact you?',
+      q: 'How do I contact you?',
       a: 'wedding@xanadu.ws'
     }
   ]

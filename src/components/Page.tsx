@@ -62,7 +62,7 @@ export default function Page({ style, children, ...rest }: PageProps) {
 
         {children}
 
-        <Container mt={16} maxW="container.xl">
+        <Container mt={16} maxW="container.xl" mb={8}>
           <Grid templateColumns="1fr minmax(0, 100%)" gap={8}>
             <Text color="gray.500" whiteSpace="nowrap" fontSize="sm">
               <Icon as={ImHeart} /> Tyler &amp; Phoebe<br />

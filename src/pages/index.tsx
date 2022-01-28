@@ -1,7 +1,11 @@
-import { Heading, Text, Box, Container, VStack, Alert, AlertTitle, AlertDescription, AlertIcon, Grid } from '@chakra-ui/react';
+import { Heading, Text, Box, Container, VStack, Alert, AlertTitle, AlertDescription, AlertIcon, Grid, Link } from '@chakra-ui/react';
+import Image from 'next/image';
 import { Page, Name, Date, Schedule, Address, MapOptionButton, HotelsButton, Rsvp, Faq } from '../components';
-import { ImBug } from 'react-icons/im';
+import { ImPencil2 } from 'react-icons/im';
 import config from '../config';
+import imgVertical from '../../photos/v1.jpg';
+import imgHorizontal1 from '../../photos/h1.jpg';
+import imgHorizontal2 from '../../photos/h2.jpg';
 
 export default function IndexPage() {
   return (
@@ -24,31 +28,46 @@ export default function IndexPage() {
       </Container>
 
       <Container mb={12} maxW="container.sm" borderColor="purple.700" borderWidth={2} p={4} rounded="sm" shadow="md">
-        <Heading as="h2" fontSize="3xl" textAlign="center" mb={8}>RSVP</Heading>
-        <Rsvp textAlign="center" justifyContent="center" />
+        <Heading as="h2" fontSize="3xl" textAlign="center" mb={4}>RSVP</Heading>
+        <Rsvp />
+      </Container>
+
+      <Container mb={12} maxW="container.xl" backgroundColor="purple.100" pt={4} pb={4}>
+        <Container maxW="container.md">
+          <Alert colorScheme="purple">
+            <AlertIcon as={ImPencil2} alignSelf="flex-start" />
+            <Box>
+              <AlertTitle color="purple.700" mb={4}>Note from Phoebe &amp; Tyler</AlertTitle>
+              <AlertDescription fontSize="lg" lineHeight={1.4}>
+                <Text mb={4}>
+                  This is a wedding in every sense, but not a traditional wedding in every sense! It will be small, and
+                  we are picking and choosing the traditions we want to keep. We are not having a wedding party, setting
+                  wedding colors, spelling out all the numbers in our invitations, etc.
+                </Text>
+                <Text>
+                  We can&apos;t wait to celebrate with you!
+                </Text>
+              </AlertDescription>
+            </Box>
+          </Alert>
+        </Container>
       </Container>
 
       <Container maxW="container.lg" mb={12}>
-        <Heading as="h2" fontSize="3xl" textAlign="center" mb={8}>Wedding-Day Info</Heading>
         <Grid templateColumns={{ base: '1fr', md: '1fr 1fr'}} gap={16}>
           <Box>
             <Heading as="h3" fontSize="2xl" mb={4}>Schedule</Heading>
             <Schedule mb={12} />
 
-            <Heading as="h3" fontSize="2xl" mb={4}>Travel</Heading>
-            <Text mb={2}>
-              <Text as="span" fontWeight="bold">Hotels:</Text> {config.hotels}
-              <HotelsButton size="xs" rounded="sm" ml={2} />
-            </Text>
-            <Text mb={2}>
-              <Text as="span" fontWeight="bold">Parking:</Text> {config.venue.parking}
-            </Text>
-            <Text mb={12}>
-              <Text as="span" fontWeight="bold">Public Transportation:</Text> {config.venue.publicTransportation}
-            </Text>
-
             <Heading as="h3" fontSize="2xl" mb={4}>Dress Code</Heading>
-            <Text>{config.dressCode}</Text>
+            <Text mb={12}>{config.dressCode}</Text>
+
+            <Heading as="h3" fontSize="2xl" mb={4}>COVID Precautions</Heading>
+            <Text mb={2}>
+              We don&apos;t know exactly what the state of the world will be in August 2022, but Wisteria Hall has
+              mixed indoor-outdoor seating which we expect will provide a safe venue. Guests be fully vaccinated by the
+              time they attend.
+            </Text>
           </Box>
           <Box>
             <Grid templateColumns="1fr 1fr" gap={2} mb={4}>
@@ -59,33 +78,44 @@ export default function IndexPage() {
               </Box>
             </Grid>
             <Address />
+
+
+            <Heading as="h3" fontSize="2xl" mb={4} mt={12}>Travel</Heading>
+            <Text mb={2}>
+              <Text as="span" fontWeight="bold">Hotels:</Text> {config.hotels}
+              <HotelsButton size="xs" rounded="sm" ml={2} />
+            </Text>
+            <Text mb={2}>
+              <Text as="span" fontWeight="bold">Parking:</Text> {config.venue.parking}
+            </Text>
+            <Text>
+              <Text as="span" fontWeight="bold">Public Transportation:</Text> {config.venue.publicTransportation}
+            </Text>
           </Box>
         </Grid>
       </Container>
 
-      <Container mb={12} maxW="container.xl" backgroundColor="purple.100" pt={4} pb={4}>
-        <Container maxW="container.md">
-          <Alert colorScheme="purple">
-            <AlertIcon as={ImBug} alignSelf="flex-start" />
-            <Box>
-              <AlertTitle>COVID Precautions</AlertTitle>
-              <AlertDescription>
-                <Text mb={2}>
-                  We don&apos;t know exactly what the state of the world will be in August 2022, but Wisteria Hall has
-                  mixed indoor-outdoor seating which we expect will provide a safe venue (with a lower risk of
-                  cancellation).
-                </Text>
-                <Text>
-                  At this time we expect that we will require that all guests be fully vaccinated by the time they attend,
-                  and we may require masks.
-                </Text>
-              </AlertDescription>
+      <Container maxW="container.lg" mt={{ base: 12, md: 24 }}>
+        <Grid templateColumns="1fr 1fr" gap={4}>
+          <Box>
+            <Image src={imgVertical} placeholder="blur" alt="" sizes="500px" />
+          </Box>
+          <Box>
+            <Box maxH="calc(50% - var(--chakra-space-4) * 1.4)" objectFit="cover" overflow="hidden" mb={4}>
+              <Image src={imgHorizontal1} alt="" placeholder="blur" sizes="500px" />
             </Box>
-          </Alert>
-        </Container>
+            <Box maxH="calc(50% - var(--chakra-space-4) * 1.4)" objectFit="cover" overflow="hidden">
+              <Image src={imgHorizontal2} placeholder="blur" alt="" sizes="500px" />
+            </Box>
+          </Box>
+        </Grid>
+        <Text fontSize="sm" color="gray.700" mt={-4}>
+          Photography by <Link href="https://www.shawntse.wedding/" target="_blank">Shawn Tse</Link>.
+          (Header photo by Katie Bustin.)
+        </Text>
       </Container>
 
-      <Container maxW="container.lg">
+      <Container maxW="container.lg" mt={{ base: 12, md: 24 }}>
         <Heading as="h2" fontSize="3xl" textAlign="center" mb={8}>FAQs</Heading>
         <Faq />
       </Container>

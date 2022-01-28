@@ -24,6 +24,11 @@ export default extendTheme({
         },
       },
     },
+    FormLabel: {
+      baseStyle: {
+        fontWeight: "600",
+      },
+    },
   },
   fonts: {
     heading: 'Alata, sans-serif',

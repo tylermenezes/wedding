@@ -4,7 +4,13 @@ import {
   Box,
   Text,
   HStack,
+  FormControl,
+  FormLabel,
+  FormHelperText,
+  InputGroup,
+  InputLeftElement,
   Input,
+  Icon,
   Button,
   Radio,
   RadioGroup,
@@ -12,14 +18,19 @@ import {
   PinInputField,
   useToast,
 } from "@chakra-ui/react";
+import { ImMail } from 'react-icons/im';
 
-const API = 'https://script.google.com/macros/s/AKfycbzFf7TY2wl__vrJbaHRhsF7URmQnP3MBs0FWh3IzEaI4NWSJFL4iicbY7upToXUj7Yigw/exec';
+const SIMPLE_EMAIL_REGEX = /^\S+@\S+\.\S+$/;
 
-type APIResponse = { success: false } | {
-  success: true
+const API = 'https://script.google.com/macros/s/AKfycbwWLIhNXc4uNEY8DPPpur7EF4twmdpNw1isdsF0xX9N8LVXccuOgDSqXpda85lD4GjTHQ/exec';
+
+type APIResponse = {
+  success: boolean
   name: string
   max: number
   rsvp: number | null
+  email: string | null
+  dietary: string | null
 }
 
 interface RsvpNumberPickerProps extends ChakraProps {
@@ -36,12 +47,12 @@ function RsvpNumberPicker({ max, onChange, colorScheme, defaultValue, ...rest }:
         defaultValue={defaultValue ? defaultValue.toString() : undefined}
         onChange={(e) => onChange(Number.parseInt(e))}
       >
-        <HStack justifyContent="space-around">
+        <HStack>
           <Radio value="0" size="lg" colorScheme={colorScheme}>
             No one
           </Radio>
           {Array.from(Array(max).keys()).map((num) => (
-            <Radio key={num} value={`${num + 1}`} size="lg" colorScheme={colorScheme}>
+            <Radio key={num} value={`${num + 1}`} size="lg" colorScheme={colorScheme} pl={8}>
               {num + 1} {num === 0 ? 'person' : 'people'}
             </Radio>
           ))}
@@ -56,13 +67,17 @@ export default function Rsvp(props: ChakraProps) {
   const [code, setCode] = useState('');
   const [info, setInfo] = useState<APIResponse | undefined>();
   const [rsvp, setRsvp] = useState<number | undefined>();
+  const [email, setEmail] = useState<string | undefined>();
+  const [dietary, setDietary] = useState<string | undefined>();
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   if (isSubmitted) {
     return (
       <Box {...props}>
-        <Text>Thank you, we have updated your RSVP for {rsvp} attendees.</Text>
+        <Text textAlign="center">
+          Thank you, we have updated your RSVP for {typeof rsvp === 'undefined' ? (info?.rsvp || '?') : rsvp} attendees.
+        </Text>
       </Box>
     )
   }
@@ -70,55 +85,100 @@ export default function Rsvp(props: ChakraProps) {
   if (info?.success ) {
     return (
       <Box {...props}>
-        <Text mb={4} fontWeight="bold" fontSize="lg">{info.name}</Text>
-        <RsvpNumberPicker
-          colorScheme="purple"
-          mb={4}
-          max={info.max}
-          onChange={setRsvp}
-          defaultValue={info.rsvp}
-        />
-        <Button
-          colorScheme="purple"
-          isLoading={isLoading}
-          disabled={typeof rsvp === 'undefined'}
-          onClick={async () => {
-            setIsLoading(true);
-            try {
-              const resp = await fetch(`${API}?code=${encodeURIComponent(code)}&rsvp=${encodeURIComponent(rsvp!)}`);
-              const data = await resp.json();
-              if (!data.success) {
-                toast({
-                  title: 'Error',
-                  description: 'Invalid RSVP.',
-                  status: 'error',
-                });
-              } else {
-                setIsSubmitted(true);
-                toast({
-                  title: 'Success!',
-                  description: 'RSVP submitted.',
-                  status: 'success',
-                })
-              }
-            } catch(ex) {
-                toast({
-                  title: 'Error',
-                  description: (ex as Error).toString(),
-                  status: 'error',
-                });
+        <Text mb={4} fontWeight="bold" fontSize="lg" textAlign="center">{info.name}</Text>
+        <FormControl mb={8}>
+          <FormLabel>Who is coming?</FormLabel>
+          <RsvpNumberPicker
+            textAlign="center"
+            colorScheme="purple"
+            mb={4}
+            max={info.max}
+            onChange={setRsvp}
+            defaultValue={info.rsvp}
+          />
+        </FormControl>
+        {(typeof rsvp !== 'undefined' ? rsvp : (info?.rsvp || 0)) > 0 && (
+          <>
+            <FormControl mb={8}>
+              <FormLabel>What email can we use to reach you?</FormLabel>
+              <InputGroup>
+                <InputLeftElement
+                  pointerEvents="none"
+                  children={<Icon as={ImMail} color="gray.300" />}
+                />
+                <Input
+                  type="email"
+                  placeholder="you@yours.com"
+                  defaultValue={info.email || ''}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </InputGroup>
+            </FormControl>
+            <FormControl mb={8}>
+              <FormLabel>If you have any dietary restrictions, please specify:</FormLabel>
+              <Input
+                type="text"
+                defaultValue={info.dietary || ''}
+                onChange={(e) => setDietary(e.target.value)}
+              />
+              {(typeof rsvp !== 'undefined' ? rsvp : (info?.rsvp || 0)) > 1 && (
+                <FormHelperText>Please specify who has the restriction.</FormHelperText>
+              )}
+            </FormControl>
+          </>
+        )}
+        <Box textAlign="center">
+          <Button
+            colorScheme="purple"
+            isLoading={isLoading}
+            disabled={
+              (typeof rsvp === 'undefined' && typeof email === 'undefined' && typeof dietary === 'undefined')
+              || (Boolean(email) && !SIMPLE_EMAIL_REGEX.test(email!))
             }
-            setIsLoading(false);
-          }}
-        >
-          Submit
-        </Button>
+            onClick={async () => {
+              setIsLoading(true);
+              try {
+                const params = new URLSearchParams({
+                  code,
+                  ...(typeof rsvp !== 'undefined' ? { rsvp: rsvp.toString() } : {}),
+                  ...(typeof email !== 'undefined' ? { email: email as string } : {}),
+                  ...(typeof dietary !== 'undefined' ? { dietary: dietary as string } : {}),
+                });
+                const resp = await fetch(`${API}?${params.toString()}`);
+                const data = await resp.json();
+                if (!data.success) {
+                  toast({
+                    title: 'Error',
+                    description: 'Invalid RSVP.',
+                    status: 'error',
+                  });
+                } else {
+                  setIsSubmitted(true);
+                  toast({
+                    title: 'Success!',
+                    description: 'RSVP submitted.',
+                    status: 'success',
+                  })
+                }
+              } catch(ex) {
+                  toast({
+                    title: 'Error',
+                    description: (ex as Error).toString(),
+                    status: 'error',
+                  });
+              }
+              setIsLoading(false);
+            }}
+          >
+            Submit
+          </Button>
+        </Box>
       </Box>
     )
   }
 
   return (
-    <HStack {...props}>
+    <HStack justifyContent="center" {...props}>
       <Text>Code:</Text>
       <HStack>
         <PinInput type="alphanumeric" isDisabled={isLoading} onChange={(e) => setCode(e)}>
