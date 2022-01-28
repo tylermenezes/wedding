@@ -44,13 +44,12 @@ export default function IndexPage() {
                   choosing the traditions we want to keep.
                 </Text>
                 <Text mb={4}>
-                  We aren&apos;t having a wedding party or setting wedding colors (and rather than formal invitations,
-                  we{' '}
+                  It will be small. We aren&apos;t having a wedding party or setting wedding colors (and rather than
+                  super formal invitations, we{' '}
                   <Link href="https://www.flickr.com/photos/186643214@N02/albums/72177720296186294" target="_blank">
                     designed and screen printed
                   </Link>
-                  {' '}you some art). Phoebe is making her own dress, and we&apos;re making the rings too. It will be
-                  small.
+                  {' '}you some art). Phoebe is making her own dress, and we&apos;re making the rings too.
                 </Text>
                 <Text>
                   We can&apos;t wait to celebrate with you!
