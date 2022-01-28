@@ -72,8 +72,8 @@ export default function IndexPage() {
             <Heading as="h3" fontSize="2xl" mb={4}>COVID Precautions</Heading>
             <Text mb={2}>
               We don&apos;t know exactly what the state of the world will be in August 2022, but Wisteria Hall has
-              mixed indoor-outdoor seating which we expect will provide a safe venue. Guests be fully vaccinated by the
-              time they attend.
+              mixed indoor-outdoor seating which we expect will provide a safe venue. You must be fully vaccinated
+              to attend.
             </Text>
           </Box>
           <Box>
