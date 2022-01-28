@@ -102,10 +102,7 @@ export default function Rsvp(props: ChakraProps) {
             <FormControl mb={8}>
               <FormLabel>What email can we use to reach you?</FormLabel>
               <InputGroup>
-                <InputLeftElement
-                  pointerEvents="none"
-                  children={<Icon as={ImMail} color="gray.300" />}
-                />
+                <InputLeftElement pointerEvents="none"><Icon as={ImMail} color="gray.300" /></InputLeftElement>
                 <Input
                   type="email"
                   placeholder="you@yours.com"
