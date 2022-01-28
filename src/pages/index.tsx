@@ -40,9 +40,16 @@ export default function IndexPage() {
               <AlertTitle color="purple.700" mb={4}>Note from Phoebe &amp; Tyler</AlertTitle>
               <AlertDescription fontSize="lg" lineHeight={1.4}>
                 <Text mb={4}>
-                  This is a wedding in every sense, but not a traditional wedding in every sense! It will be small, and
-                  we are picking and choosing the traditions we want to keep. We are not having a wedding party, setting
-                  wedding colors, spelling out all the numbers in our invitations, etc.
+                  This is a wedding in every sense, but not a traditional wedding in every sense! We are picking and
+                  choosing the traditions we want to keep.
+                </Text>
+                <Text mb={4}>
+                  We aren&apos;t having a wedding party or setting wedding colors (and rather than formal invitations,
+                  we{' '}
+                  <Link href="https://www.flickr.com/photos/186643214@N02/albums/72177720296186294" target="_blank">
+                    designed and screen printed
+                  </Link>
+                  {' '}you some art). Phoebe is making her own dress, and we're making the rings too. It will be small.
                 </Text>
                 <Text>
                   We can&apos;t wait to celebrate with you!
