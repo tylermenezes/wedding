@@ -54,7 +54,7 @@ export default {
   links: [
     {
       name: 'Things to Do',
-      url: 'https://weirdvector.notion.site/70cda8e7478040d880cf768612ca617e',
+      url: 'https://weirdvector.notion.site/Things-to-Do-in-Seattle-be49395a27c04b5d88786c973819b793',
     },
     {
       name: 'Hotels',
