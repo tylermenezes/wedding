@@ -49,7 +49,10 @@ export default function IndexPage() {
                   <Link href="https://www.flickr.com/photos/186643214@N02/albums/72177720296186294" target="_blank">
                     designed and screen printed
                   </Link>
-                  {' '}you some art). Phoebe is making her own dress, and we&apos;re making the rings too.
+                  {' '}you some art). Phoebe is making her own dress, and we{' '}
+                  <Link href="https://www.flickr.com/photos/tylermenezes/albums/72177720296501536" target="_blank">
+                    made our own rings too.
+                  </Link>
                 </Text>
                 <Text>
                   We can&apos;t wait to celebrate with you!
