@@ -66,7 +66,7 @@ export default {
     },
     {
       name: 'About Tyler',
-      url: 'https://tyler.vc/'
+      url: 'https://en.wikipedia.org/wiki/Tyler_Menezes'
     },
   ],
   faqs: [
