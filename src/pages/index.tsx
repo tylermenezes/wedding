@@ -28,7 +28,8 @@ export default function IndexPage() {
       </Container>
 
       <Container mb={12} maxW="container.sm" borderColor="purple.700" borderWidth={2} p={4} rounded="sm" shadow="md">
-        <Heading as="h2" fontSize="3xl" textAlign="center" mb={4}>RSVP</Heading>
+        <Heading as="h2" fontSize="3xl" textAlign="center" mb={2}>RSVP</Heading>
+	<Text textAlign="center" fontSize="sm" mb={4}>You can edit your RSVP until June 15.</Text>
         <Rsvp />
       </Container>
 
